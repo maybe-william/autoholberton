@@ -1,0 +1,17 @@
+#!/usr/bin/ruby
+
+
+runDir = File.expand_path(__dir__)
+puts runDir
+cLibDir = runDir + "/../lib/creatify"
+puts cLibDir
+puts "Please paste webpage. Press ^D (Ctrl+d on windows-based machines) when you're done."
+puts `#{cLibDir + "/"}creatifyGetProjectPage.rb`
+puts `#{cLibDir + "/"}creatifyGetFilenameMap.rb`
+File.open(".projectMap", "r").each_line do
+  |line|
+  filename = line.split(':')[-1]
+  puts `touch '#{filename.chomp}'`
+end
+
+
