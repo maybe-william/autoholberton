@@ -1,5 +1,17 @@
 #!/usr/bin/ruby
 
+puts "Please paste webpage. Press ^D (Ctrl+d on windows-based machines) when you're done."
+
+File.open(".projectText", "w") do
+  |f|
+  x = gets()
+  while(x)
+    f.puts(x)
+    x = gets()
+  end
+end
+
+
 File.open(".projectMap", "w") do
   |map|
   currentproject = 0
@@ -13,4 +25,5 @@ File.open(".projectMap", "w") do
     
   end
 end
+
 

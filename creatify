@@ -1,0 +1,10 @@
+#!/usr/bin/ruby
+
+
+File.open(".projectMap", "r").each_line do
+  |line|
+  filename = line.split(':')[-1]
+  puts `touch '#{filename.chomp}'`
+end
+
+
