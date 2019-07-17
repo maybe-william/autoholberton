@@ -1,5 +1,9 @@
 #!/usr/bin/ruby
 
+unless File.exists?('.projectFileMap')
+  puts "'.projectFileMap' not found. Please run indexify first."
+  exit(1)
+end
 
 File.open(".projectFileMap", "r").each_line do
   |line|
