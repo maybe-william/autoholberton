@@ -1,0 +1,22 @@
+#!/usr/bin/ruby
+
+unless File.exists?('.projectProtoMap')
+  puts "'.projectProtoMap' not found. Please run indexify first."
+  exit(1)
+end
+
+File.open("holberton.h", "w") do
+  |f|
+  f.puts "#ifndef _HOLBERTON_H_"
+  f.puts "#define _HOLBERTON_H_"
+  f.puts
+  File.open(".projectProtoMap", "r").each_line do
+    |line|
+    filename = line.split(':')[-1]
+    f.puts "#{filename.chomp}"
+    f.puts
+    puts "adding #{filename.chomp} to holberton.h"
+  end
+  f.puts "#endif"
+end
+puts "Done"
