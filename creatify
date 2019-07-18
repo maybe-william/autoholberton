@@ -12,6 +12,8 @@ File.open(".projectFileMap", "r").each_line do
   puts "touching #{filename.chomp}"
 end
 
+`touch README.md && echo \"\# This is the root directory for a project for Holberton School\" > README.md`
+puts "touching README.md"
 puts "Done"
 
 
