@@ -8,6 +8,16 @@ end
 File.open(".projectFileMap", "r").each_line do
   |line|
   filename = line.split(':')[-1]
+  if filename.include?('/') then
+    path = filename.chomp.split('/')
+    if path.length() == 1 then
+	    path = path[0].chomp()
+    else
+	    path = path[0...-1].join('/')
+    end
+   `mkdir -p #{path}`
+    puts "making dir #{path}"
+  end
   `touch '#{filename.chomp}'`
   puts "touching #{filename.chomp}"
 end
