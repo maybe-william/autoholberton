@@ -1,17 +1,94 @@
 #!/usr/bin/ruby
 
+### Create the indexing files:
+puts """
+Please paste the Holberton project webpage.
+(Make sure to include advanced tasks in the copying) 
+Press ^D (Ctrl+d on windows-based machines, otherwise EOF) when you're done."""
+
+File.open(".projectText", "w") do
+  |f|
+  x = gets()
+  while(x)
+    f.puts(x)
+    x = gets()
+  end
+end
+
+File.open(".projectFileMap", "w") do
+  |map|
+  currentproject = 0
+  File.open(".projectText","r").each_line do
+    |line|
+    myMatch = line.match(/^(\d+)\. .*$/)
+    currentproject = myMatch[1] if myMatch
+
+    fileMatch = line.match(/ File: (.*)$/)
+    if fileMatch
+      files = fileMatch[1].split(", ")
+      files. each do
+        |file|
+        map.puts currentproject.to_s + ":" + file
+      end
+    end
+  end
+end
+
+File.open(".projectProtoMap", "w") do
+  |map|
+  currentproject = 0
+  File.open(".projectText","r").each_line do
+    |line|
+    myMatch = line.match(/^(\d+)\. .*$/)
+    currentproject = myMatch[1] if myMatch
+
+    protoMatch = line.match(/ Prototype: (.*;)$/)
+    if protoMatch
+      proto = protoMatch[1]
+      map.puts currentproject.to_s + ":" + proto
+    end
+  end
+end
+
+puts "-------------------------------------------"
+
+
+### Create project files:
 unless File.exists?('.projectFileMap')
-  puts "'.projectFileMap' not found. Please run indexify first."
+  puts "Error: '.projectFileMap' not found."
   exit(1)
 end
 
+num = ""
+
 File.open(".projectFileMap", "r").each_line do
   |line|
-  filename = line.split(':')[-1]
+  spl = line.split(':')
+  filename = spl[-1]
+
+  new_num = spl[0]
+  if new_num != num then
+    puts ""
+    puts "Task #{new_num}:"
+    num = new_num
+  end
+
+  if filename.include?('/') then
+    path = filename.chomp.split('/')
+    if path.length() == 1 then
+	    path = path[0].chomp()
+    else
+	    path = path[0...-1].join('/')
+    end
+   `mkdir -p #{path}`
+    puts "making dir #{path}"
+  end
   `touch '#{filename.chomp}'`
   puts "touching #{filename.chomp}"
 end
 
+`touch README.md && echo \"\# This is the root directory for a project for Holberton School\" > README.md`
+puts "touching README.md"
 puts "Done"
 
 

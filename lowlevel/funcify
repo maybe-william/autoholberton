@@ -1,0 +1,54 @@
+#!/usr/bin/ruby
+
+
+unless File.exists?('.projectProtoMap') and File.exists?('.projectFileMap')
+  puts "'.projectProtoMap' and/or '.projectFileMap' not found. Please run indexify first."
+  exit(1)
+end
+
+File.open(".projectProtoMap", "r").each_line do
+  |line|
+  pMatch = line.match(/^(\d+):(.*?)([^\s^\*]*)\((.*)\);$/)
+  
+  if pMatch
+    puts "Found prototype: #{line.chomp}"
+    project = pMatch[1]
+    returnType = pMatch[2]
+    funcName = pMatch[3]
+    args = pMatch[4].scan(/(\w+),|(\w+)$/)
+    args.length.times do
+      |a|
+      if args[a][0]
+        args[a] = args[a][0]
+      elsif args[a][1]
+        args[a] = args[a][1]
+      end
+    end
+    File.open(".projectFileMap", "r").each_line do
+      |l2|
+      fMatch = l2.match(/^(\d+):\s*(.*\.c)$/)
+      if fMatch && fMatch[1] == project
+        puts "Putting into file: #{l2.chomp}"
+        File.open(fMatch[2],"w") do
+          |cfile|
+          cfile.puts "#include \"holberton.h\""
+          cfile.puts
+          cfile.puts "/**"
+          cfile.puts " * #{funcName} - function description"
+          args.each do
+            |arg|
+            cfile.puts " * @#{arg}: parameter description"
+          end
+          cfile.puts " * Return: return description" unless returnType == "void "
+          cfile.puts " */"
+
+          cfile.puts line.split(":")[-1].chomp.match(/([^;]*)/)[1]
+          cfile.puts "{"
+          cfile.puts ""
+          cfile.puts "}"
+        end
+      end
+    end
+    puts ""
+  end
+end

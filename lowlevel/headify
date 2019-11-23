@@ -10,6 +10,8 @@ File.open("holberton.h", "w") do
   f.puts "#ifndef _HOLBERTON_H_"
   f.puts "#define _HOLBERTON_H_"
   f.puts
+  f.puts "int _putchar(char);"
+  f.puts
   File.open(".projectProtoMap", "r").each_line do
     |line|
     filename = line.split(':')[-1]
