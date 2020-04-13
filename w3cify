@@ -1,0 +1,6 @@
+for i in "$@"
+do
+    echo "~~~~~~~~~~~ w3c validation for $i ~~~~~~~~~~~"
+    curl -H "Content-Type: text/html; charset=utf-8" --data-binary @"$i" https://validator.w3.org/nu/?out=gnu
+    echo ""
+done
