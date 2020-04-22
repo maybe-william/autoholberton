@@ -42,7 +42,7 @@ File.open(".projectProtoMap", "w") do
     myMatch = line.match(/^(\d+)\. .*$/)
     currentproject = myMatch[1] if myMatch
 
-    protoMatch = line.match(/ Prototype: (.*;)$/)
+    protoMatch = line.match(/\s*Prototype: (.*;)$/)
     if protoMatch
       proto = protoMatch[1]
       map.puts currentproject.to_s + ":" + proto
