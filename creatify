@@ -3,13 +3,13 @@
 ### Create the indexing files:
 puts """
 Please paste the Holberton project webpage.
-(Make sure to include advanced tasks in the copying) 
-Press ^D (Ctrl+d on windows-based machines, otherwise EOF) when you're done."""
+(Make sure to include advanced tasks and the
+copyright notice at the bottom of the page)"""
 
 File.open(".projectText", "w") do
   |f|
   x = gets()
-  while(x)
+  while(x and !(x.match(/All rights reserved\./)))
     f.puts(x)
     x = gets()
   end
