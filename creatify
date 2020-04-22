@@ -23,7 +23,7 @@ File.open(".projectFileMap", "w") do
     myMatch = line.match(/^(\d+)\. .*$/)
     currentproject = myMatch[1] if myMatch
 
-    fileMatch = line.match(/ File: (.*)$/)
+    fileMatch = line.match(/\s*File: (.*)$/)
     if fileMatch
       files = fileMatch[1].split(", ")
       files. each do
