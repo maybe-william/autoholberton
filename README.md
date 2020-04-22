@@ -15,7 +15,7 @@ What they do:
 How they work currently:
 
   - creatify - From within the empty project folder 
-  (e.g. holbertonschool-higher_level_programming/0x0F-some_example/) run creatify from wherever you've saved it on the computer (for me this is usually `../../autoholberton/creatify`) and then copy and paste the text from the project webpage into the terminal and press Ctrl-D (EOF).
+  (e.g. holbertonschool-higher_level_programming/0x0F-some_example/) run creatify from wherever you've saved it on the computer (for me this is usually `../../autoholberton/creatify`) and then copy and paste the full text from the project webpage into the terminal. Make sure you include the copyright notice at the bottom in what is copied; the script stops collecting text at the phrase "All rights reserved."
 
   - lowlevel/funcify - After running creatify inside the empty project folder, run funcify from within the same folder. For me, the path of the program is typically `../../autoholberton/lowlevel/funcify`, but it can vary depending on where you've saved it.
 
