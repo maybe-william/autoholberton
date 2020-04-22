@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 unless File.exists?('.projectProtoMap')
-  puts "'.projectProtoMap' not found. Please run indexify first."
+  puts "'.projectProtoMap' not found. Please run creatify first."
   exit(1)
 end
 

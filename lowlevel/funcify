@@ -2,7 +2,7 @@
 
 
 unless File.exists?('.projectProtoMap') and File.exists?('.projectFileMap')
-  puts "'.projectProtoMap' and/or '.projectFileMap' not found. Please run indexify first."
+  puts "'.projectProtoMap' and/or '.projectFileMap' not found. Please run creatify first."
   exit(1)
 end
 
