@@ -2,9 +2,9 @@
 This is a set of Ruby scripts made to automate certain tedious tasks related to Holberton School projects. Currently automates primarily creation/setup tasks.
 
 ## About me
-Linkedin: https://www.linkedin.com/in/william-dyrland-marquis
-Twitter: https://www.twitter.com/notwilliam4
-Holberton School Foundations Portfolio Project: https://github.com/maybe-william/RocketRiders
+- Linkedin: https://www.linkedin.com/in/william-dyrland-marquis
+- Twitter: https://www.twitter.com/notwilliam4
+- Holberton School Foundations Portfolio Project: https://github.com/maybe-william/RocketRiders
 
 I'm a self-taught Computer Scientist of 10 years. As a generalist, my interests include a wide variety of things, both in computer science and in other areas of life, and this has resulted in a broad exploration of computers in general.
 
@@ -34,8 +34,8 @@ This project was born out of tedium. In the setup processes of Holberton School 
 
 ## Unimplemented Features
 - devops/execify - Makes appropriate files executable
-- devops/onelineify - Compress HTML files into only one line long
-- devops/shebangify - Add the appropriate shebang to files
+- devops/onelineify - Compresses HTML files into only one line long
+- devops/shebangify - Adds the appropriate shebang to files
 
 ## Installation
 Clone the repo and ensure that Ruby 2.7 is installed on your computer.
