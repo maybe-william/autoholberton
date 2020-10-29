@@ -67,20 +67,20 @@ File.open(".projectFileMap", "r").each_line do
   filename = spl[-1]
 
   new_num = spl[0]
-  if new_num != num then
+  if new_num != num
     puts ""
     puts "Task #{new_num}:"
     num = new_num
   end
 
-  if filename.include?('/') then
+  if filename.include?('/')
     path = filename.chomp.split('/')
-    if path.length() == 1 then
-	    path = path[0].chomp()
+    if path.length() == 1
+      path = path[0].chomp()
     else
-	    path = path[0...-1].join('/')
+      path = path[0...-1].join('/')
     end
-   `mkdir -p #{path}`
+    `mkdir -p #{path}`
     puts "making dir #{path}"
   end
   `touch '#{filename.chomp}'`

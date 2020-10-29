@@ -9,7 +9,7 @@ end
 File.open(".projectProtoMap", "r").each_line do
   |line|
   pMatch = line.match(/^(\d+):(.*?)([^\s^\*]*)\((.*)\);$/)
-  
+
   if pMatch
     puts "Found prototype: #{line.chomp}"
     project = pMatch[1]
